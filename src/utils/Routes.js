@@ -1,5 +1,5 @@
 import React from "react";
-import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 import { Route } from "react-router-dom";
 
 const Routes = () => {
