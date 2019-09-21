@@ -1,68 +1,42 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## PROJECT NAME
+### React Hacker News Clone
 
-In the project directory, you can run:
+## PITCH
+It's as simple as the title states you're going to clone the hackernews web site but make it look like it belongs in the modern age.
 
-### `npm start`
+Their API is a firebase hosted instance and it's pretty straightforward to work with and heavily documented.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+https://github.com/HackerNews/API
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+For data persistence, you'll simply be storing the top 20 news stories on your end, so that the front end can work with those stories you deliver
 
-### `npm test`
+## MVP
+- For the clone users can simply see the top 20 stories in a modern/responsive/user friendly way.
+- Backend is to persist the top 20 stories and set up a job to update those stories as things refresh. This will require you to overwrite your DB, drop tables and recreate as necessary.
+- The front end client will show the stories and for MVP simply link the user over to the actual HN story so that they can login and comment on them.
+- Your app just makes the HN content look modern and beautiful and streamlines the current buzzworthy topics.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## STRETCH
+- Allow users to comment directly to stories through your site, this will update the comments upvotes etc in HN DB as well.
+- Allow users to save stories to their profile for later reading. Bookmarks can be laid out in a nice grid fashion.
+- Remind users about their bookmarks as things start to get stagnent; 'Hey, you may wanna read this'. 
 
-### `npm run build`
+#### WEB UI DEVELOPER
+Michael J Curry
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### WEB REACT I
+Andrew Garcia
+Kiyani Bamba
+Olamide Oredola
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+#### WEB REACT II
+Devin Bielejec
+Theodore Ngo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### WEB BACKEND (JAVA)
+Isaiah Francois
+Donald Easter
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### PROJECT LEAD
+Zac Smith
