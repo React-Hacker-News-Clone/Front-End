@@ -7,7 +7,7 @@ function App() {
     <div>
       <h1>App</h1>
       <Routes />
-      {/* Example Code */}
+      {/* Example Code 2*/}
     </div>
   );
 }
