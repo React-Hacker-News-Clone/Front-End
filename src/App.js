@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import Routes from "./utils/Routes";
 import Navigation from "./components/Navigation/Navigation";
+import firebase from "firebase"
 
 function App() {
   return (
