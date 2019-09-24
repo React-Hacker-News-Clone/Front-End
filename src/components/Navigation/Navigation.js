@@ -2,13 +2,15 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavLink } from 'react-router-dom';
+import firebase from "firebase"
 
 import './Navigation.css';
 
 const Navigation = props => {
     const logout = () => {
         localStorage.clear();
-        props.history.push('/login');
+        firebase.auth().signOut();
+        props.history.push('/');
     };
 
     if (props.location.pathname === "/login" || props.location.pathname === "/register") {
