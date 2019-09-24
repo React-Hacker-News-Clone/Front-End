@@ -38,7 +38,7 @@ function App() {
   return (
       <div className="App">
         <Routes />
-        {isSignedIn ? <div>Signed In!</div>:
+        {isSignedIn ? <><h1>Welcome {firebase.auth().currentUser.displayName}</h1><img src={firebase.auth().currentUser.photoURL} alt="Profile Url" /></>:
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />}
       </div>
   );
