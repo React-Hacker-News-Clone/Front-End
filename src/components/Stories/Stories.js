@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
-// import PageTab from "./PageTab/PageTab";
+// import PageTab from "../PageTab/PageTab";
 
 //styling below
 
@@ -30,7 +30,7 @@ function Stories() {
     axios
       .get("https://francoiscoding-javabackend.herokuapp.com/stories/stories")
       .then(res => {
-        console.log("Stories Data: ", res.data);
+        //console.log("Stories Data: ", res.data);
         setStory(res.data);
         //console.log("STORY: ", story)
       })
