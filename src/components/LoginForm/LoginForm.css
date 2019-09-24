@@ -1,8 +1,19 @@
 .login-form {
-  margin-top: 10rem;
+  margin-top: 15rem;
   display: flex;
   flex-direction: column;
   justify-items: space-between;
   margin: auto;
   width: 15vw;
+  font-weight: 500;
+}
+
+.field-form {
+  font-size: 15px;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 0px 0px 1px inset,
+    rgba(15, 15, 15, 0.1) 0px 1px 1px inset;
+  background: rgba(242, 241, 238, 0.6);
+  cursor: text;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }

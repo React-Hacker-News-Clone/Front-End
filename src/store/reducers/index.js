@@ -1,4 +1,8 @@
-import { FETCHING_STORIES_START, FETCHING_STORIES_SUCCESS } from "../actions";
+import {
+  FETCHING_STORIES_START,
+  FETCHING_STORIES_SUCCESS,
+  DELETE_STORY
+} from "../actions";
 
 const initialState = {
   stories: [],
@@ -6,7 +10,7 @@ const initialState = {
   error: ""
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_STORIES_START:
       return {
@@ -17,12 +21,18 @@ const reducer = (state = initialState, action) => {
     case FETCHING_STORIES_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        stories: action.payload
+        stories: action.payload,
+        isFetching: false
+      };
+    case DELETE_STORY:
+      const newStories = state.stories.filter(
+        story => story.id !== action.payload
+      );
+      return {
+        ...state,
+        stories: newStories
       };
     default:
       return state;
   }
 };
-
-export default reducer;

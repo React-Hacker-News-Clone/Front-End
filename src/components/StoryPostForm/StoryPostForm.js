@@ -8,7 +8,7 @@ import "./StoryPostForm.css";
 const StoryPostForm = props => {
   const [newStory, setNewStory] = useState({
     title: "",
-    url: ""
+    story: ""
   });
 
   const handleChange = evt => {
@@ -21,11 +21,12 @@ const StoryPostForm = props => {
       ...newStory
     };
     console.log("Story input: ", newStoryToAdd);
-    axiosWithAuth().post(
-      "https://francoiscoding-javabackend.herokuapp.com/stories/stories",
-      newStoryToAdd
-    );
-    props.history.push("/stories");
+    axiosWithAuth()
+      .post(
+        "https://francoiscoding-hackernews-node.herokuapp.com/stories",
+        newStoryToAdd
+      )
+      .then(props.history.push("/usernews"));
   };
 
   return (
@@ -43,11 +44,11 @@ const StoryPostForm = props => {
         </Form.Group>
 
         <Form.Group controlId="formBasicTitle">
-          <Form.Label>Link</Form.Label>
+          <Form.Label>URL</Form.Label>
           <Form.Control
             type="text"
-            name="url"
-            value={newStory.url}
+            name="story"
+            value={newStory.story}
             onChange={evt => handleChange(evt)}
           />
         </Form.Group>

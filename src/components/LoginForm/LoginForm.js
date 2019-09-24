@@ -5,6 +5,7 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import "./LoginForm.css";
 import styled from "styled-components";
+import * as Yup from "yup";
 
 const FormStyle = styled.div`
   margin: 15px auto;
@@ -22,7 +23,7 @@ firebase.initializeApp({
   measurementId: "G-D7SGF8KTRQ"
 });
 
-const LoginForm = () => {
+function LoginForm({ values, errors, touched }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const uiConfig = {
     signInFlow: "popup",
@@ -42,12 +43,26 @@ const LoginForm = () => {
       console.log("user info", user);
     });
   }, []);
+
   return (
     <>
       <FormStyle>
         <Form className="login-form">
-          <Field type="text" name="username" placeholder="Username" />
-          <Field type="password" name="password" placeholder="Password" />
+          <h2> Sign in </h2>
+          {touched.username && errors.username && <p>{errors.email}</p>}
+          <Field
+            className="field-form"
+            type="text"
+            name="username"
+            placeholder="Username"
+          />
+          {touched.password && errors.password && <p>{errors.password}</p>}
+          <Field
+            className="field-form"
+            type="password"
+            name="password"
+            placeholder="Password"
+          />
           <button>Log In</button>
         </Form>
       </FormStyle>
@@ -67,7 +82,7 @@ const LoginForm = () => {
       \
     </>
   );
-};
+}
 
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password }) {
@@ -76,6 +91,15 @@ const FormikLoginForm = withFormik({
       password: password || ""
     };
   },
+  //======VALIDATION SCHEMA==========
+  // validationSchema: Yup.object().shape({
+  //   username: Yup.string()
+  //     .username("Username not valid")
+  //     .required("Enter an username, please!"),
+  //   password: Yup.string()
+  //     .min(6, "Password must be 6 characters or longer")
+  //     .required("Password is required")
+  // }),
 
   handleSubmit(values) {
     console.log(values);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
+//import PageTab from "./PageTab";
 
 //styling below
 
@@ -55,6 +56,7 @@ function Stories() {
         })}
       </StoryBox>
     </Container>
+    // <PageTab />
   );
 }
 

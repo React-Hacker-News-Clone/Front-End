@@ -42,11 +42,14 @@ const Navigation = props => {
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand>hackernews.clone</Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link as={NavLink} to="/stories">
-          Stories
+        <Nav.Link as={NavLink} to="/hackernews">
+          Hacker News
         </Nav.Link>
-        <Nav.Link as={NavLink} to="/post-story">
-          Post
+        <Nav.Link as={NavLink} to="/usernews">
+          User News
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/submit">
+          Submit
         </Nav.Link>
       </Nav>
       <Nav className="ml-auto">
