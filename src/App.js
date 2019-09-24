@@ -1,20 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
 import Routes from "./utils/Routes";
-import Navigation from "./components/Navigation/Navigation";
 import firebase from "firebase"
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState()
   return (
-    <Router>
       <div className="App">
-        <Route path="/" component={Navigation} />
         <Routes />
       </div>
-    </Router>
   );
 }
 
