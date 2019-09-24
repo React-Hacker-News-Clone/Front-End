@@ -1,75 +1,64 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import { withFormik, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
-function RegistrationForm() {
+import './RegistrationForm.css';
 
-  const initialFormValues = {
-    name: '',
-    username: '',
-    email: '',
-    password: ''
-  }
-
-  const SignupSchema = yup.object().shape({
-    name: yup.string()
-      .required('Name field is empty'),
-    username: yup.string()
-      .required('Please pick a username'),
-    email: yup.string()
-      .email('Invalid email')
-      .required('Email field is empty'),
-    password: yup.string()
-      .min(6, 'Password must be 6 characters or more'),
-  })
-
-  const handleSubmit = values => {
-    console.log(values);
-    //write submit fuction later
-  }
+function RegistrationForm(props) {
 
   return (
-    <Formik
-      initialValues={initialFormValues}
-      onSubmit={handleSubmit}
-      validationSchema={SignupSchema}
-      render={() => {
-        return (
-          <Form>
-            <div>
-              <label>
-                Name
-                <Field name='name' type='text' placeholder='Name' />
-              </label>
-              <ErrorMessage name='name' component='div'/>
-            </div>
-            <div>
-              <label>
-                Username
-                <Field name='username' type='text' placeholder='Pick a username' />
-              </label>
-              <ErrorMessage name='username' component='div' />
-            </div>
-            <div>
-              <label>
-                Email
-                <Field name='email' type='email' placeholder='Email' />
-              </label>
-              <ErrorMessage name='email' component='div' />
-            </div>
-            <div>
-              <label>
-                Password
-                <Field name='password' type='password' placeholder='Password' />
-              </label>
-              <ErrorMessage name='password' component='div' />
-            </div>
-            <button type='submit'>Submit</button>
-          </Form>
-        )
-      }}
-    />
+    <Form className="register-form" onSubmit={props.handleSubmit}>
+      <Form.Group controlId="formBasicName">
+        <Form.Label>Name</Form.Label>
+        <Form.Control as={Field} type="name" name="name" />
+        <ErrorMessage name='name' />
+      </Form.Group>
+      <Form.Group controlId="formBasicUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control as={Field} type="username" name="username" />
+        <ErrorMessage name='username' />
+      </Form.Group>
+      <Form.Group controlId="formBasicUsername">
+        <Form.Label>Email</Form.Label>
+        <Form.Control as={Field} type="email" name="email" />
+        <ErrorMessage name='email' />
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control as={Field} type="password" name="password" />
+        <ErrorMessage name='password' />
+      </Form.Group>
+      <Button type='submit'>Submit</Button>
+    </Form>
   )
-}
+};
 
-export default RegistrationForm;
+const FormikRegistrationForm = withFormik({
+  mapPropsToValues({ name, username, email, password }) {
+    return {
+      name: name || "",
+      username: username || "",
+      email: email || "",
+      password: password || "",
+    };
+  },
+  validationSchema: Yup.object().shape({
+    name: Yup.string()
+      .required('Name field is empty'),
+    username: Yup.string()
+      .required('Please pick a username'),
+    email: Yup.string()
+      .email('Invalid email')
+      .required('Email field is empty'),
+    password: Yup.string()
+      .min(6, 'Password must be 6 characters or longer'),
+  }),
+  handleSubmit(values, { props }) {
+    props.history.push('/stories');
+  }
+})(RegistrationForm);
+
+export default FormikRegistrationForm;

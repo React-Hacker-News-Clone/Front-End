@@ -1,6 +1,6 @@
 import React from "react";
 import { withFormik, Form, Field } from "formik";
-// import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton,} from "react-social-login-buttons";
+import { FacebookLoginButton, GoogleLoginButton, TwitterLoginButton} from "react-social-login-buttons";
 
 function LoginForm() {
   return (
@@ -8,9 +8,9 @@ function LoginForm() {
       <Field type="text" name="username" placeholder="Username" />
       <Field type="password" name="password" placeholder="Password" />
       <button>Log In</button>
-      {/* <FacebookLoginButton onClick={() => alert("Hello")} />
-      <GoogleLoginButton onClick={() => alert("Hello")} />
-      <TwitterLoginButton onClick={() => alert("Hello")} /> */}
+      <FacebookLoginButton onClick={() => alert("You're logging!")} />
+      <GoogleLoginButton onClick={() => alert("You're logging!")} />
+      <TwitterLoginButton onClick={() => alert("You're logging!")} />
     </Form>
   );
 }
