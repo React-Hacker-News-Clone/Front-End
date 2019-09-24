@@ -43,7 +43,12 @@ function Stories() {
       <StoryBox>
         {/* <StoriesCard /> */}
         {/* {story.slice(0, 5).map(item => { <--this will only display 5 cards  */}
-        {story.map(item => {
+        {story.slice(0, 5).map(item => {
+          return (
+            <StoriesCard key={item.storyid} title={item.title} url={item.url} />
+          );
+        })}
+        {story.slice(6, 11).map(item => {
           return (
             <StoriesCard key={item.storyid} title={item.title} url={item.url} />
           );

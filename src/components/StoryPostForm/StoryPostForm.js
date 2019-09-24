@@ -8,31 +8,30 @@ import "./StoryPostForm.css";
 const StoryPostForm = props => {
   const [newStory, setNewStory] = useState({
     title: "",
-    story: ""
+    url: ""
   });
 
   const handleChange = evt => {
     setNewStory({ ...newStory, [evt.target.name]: evt.target.value });
   };
 
-  const createStory = evt => {
+  const handleSubmit = evt => {
     evt.preventDefault();
     const newStoryToAdd = {
       ...newStory
     };
-    console.log("inputed story", newStoryToAdd);
-    axiosWithAuth()
-      .post(
-        "https://francoiscoding-hackernews-node.herokuapp.com/stories",
-        newStoryToAdd
-      )
-      .then(props.history.push("/stories"));
+    console.log("Story input: ", newStoryToAdd);
+    axiosWithAuth().post(
+      "https://francoiscoding-javabackend.herokuapp.com/stories/stories",
+      newStoryToAdd
+    );
+    props.history.push("/stories");
   };
 
   return (
     <div className="post-story">
-      <h2>Post a story</h2>
-      <Form onSubmit={createStory}>
+      <h2>Submit a story</h2>
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formBasicTitle">
           <Form.Label>Title</Form.Label>
           <Form.Control
@@ -43,14 +42,12 @@ const StoryPostForm = props => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formBasicStory">
-          <Form.Label>Story</Form.Label>
+        <Form.Group controlId="formBasicTitle">
+          <Form.Label>Link</Form.Label>
           <Form.Control
-            as="textarea"
-            rows="3"
             type="text"
-            name="story"
-            value={newStory.story}
+            name="url"
+            value={newStory.url}
             onChange={evt => handleChange(evt)}
           />
         </Form.Group>

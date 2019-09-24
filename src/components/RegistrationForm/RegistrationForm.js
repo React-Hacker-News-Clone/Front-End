@@ -8,6 +8,7 @@ import axiosWithAuth from "../../utils/axiosWithAuth";
 
 import "./RegistrationForm.css";
 
+const postUrl = "https://francoiscoding-javabackend.herokuapp.com/registration";
 function RegistrationForm(props) {
   return (
     <Form className="register-form" onSubmit={props.handleSubmit}>
@@ -55,6 +56,13 @@ const FormikRegistrationForm = withFormik({
   }),
   handleSubmit(values, { props }) {
     props.history.push("/stories");
+
+    axiosWithAuth()
+      .post(postUrl, values)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => console.log(error.message));
   }
 })(RegistrationForm);
 

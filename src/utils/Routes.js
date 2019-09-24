@@ -6,7 +6,7 @@ import LoginForm from "../components/LoginForm/LoginForm";
 import FormikRegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import Stories from "../components/Stories/Stories";
 import StoryPostForm from "../components/StoryPostForm/StoryPostForm";
-import Navigation from "../components/Navigation/Navigation"
+import Navigation from "../components/Navigation/Navigation";
 
 const Routes = () => {
   return (

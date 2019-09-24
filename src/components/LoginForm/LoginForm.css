@@ -1,4 +1,8 @@
 .login-form {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
   margin: auto;
-  width: 25vw;
+  width: 15vw;
 }

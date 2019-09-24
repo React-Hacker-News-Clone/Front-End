@@ -7,7 +7,6 @@ function StoriesCard(props) {
     <Card style={{ width: "45rem", marginBottom: "1.5rem" }}>
       <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
         <Card.Title>{props.title}</Card.Title>
-        {/* <Card.Text></Card.Text> */}
         <Card.Link href={props.url}>Link to Story</Card.Link>
       </Card.Body>
     </Card>
@@ -15,3 +14,5 @@ function StoriesCard(props) {
 }
 
 export default StoriesCard;
+
+//<Card.Text></Card.Text>

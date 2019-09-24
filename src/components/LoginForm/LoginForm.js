@@ -4,6 +4,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import "./LoginForm.css";
+import styled from "styled-components";
+
+const FormStyle = styled.div`
+  margin: 15px auto;
+  max-width: 320px;
+`;
 
 firebase.initializeApp({
   apiKey: "AIzaSyCM3KbpAkmHXE3wIy3Int2ANC3WvrhPbZc",
@@ -33,15 +39,18 @@ const LoginForm = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
+      console.log("user info", user);
     });
   }, []);
   return (
     <>
-      <Form className="login-form">
-        <Field type="text" name="username" placeholder="Username" />
-        <Field type="password" name="password" placeholder="Password" />
-        <button>Log In</button>
-      </Form>
+      <FormStyle>
+        <Form className="login-form">
+          <Field type="text" name="username" placeholder="Username" />
+          <Field type="password" name="password" placeholder="Password" />
+          <button>Log In</button>
+        </Form>
+      </FormStyle>
       <div className="App">
         {isSignedIn ? (
           <>
@@ -74,4 +83,3 @@ const FormikLoginForm = withFormik({
 })(LoginForm);
 
 export default FormikLoginForm;
-// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
