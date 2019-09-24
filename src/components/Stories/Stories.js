@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
-//import PageTab from "./PageTab";
+// import PageTab from "./PageTab/PageTab";
 
 //styling below
 
@@ -40,23 +40,33 @@ function Stories() {
   }, []);
 
   return (
-    <Container>
-      <StoryBox>
-        {/* <StoriesCard /> */}
-        {/* {story.slice(0, 5).map(item => { <--this will only display 5 cards  */}
-        {story.slice(0, 5).map(item => {
-          return (
-            <StoriesCard key={item.storyid} title={item.title} url={item.url} />
-          );
-        })}
-        {story.slice(6, 11).map(item => {
-          return (
-            <StoriesCard key={item.storyid} title={item.title} url={item.url} />
-          );
-        })}
-      </StoryBox>
-    </Container>
-    // <PageTab />
+    <div>
+      <Container>
+        <StoryBox>
+          {/* <StoriesCard /> */}
+          {/* {story.slice(0, 5).map(item => { <--this will only display 5 cards  */}
+          {story.slice(0, 5).map(item => {
+            return (
+              <StoriesCard
+                key={item.storyid}
+                title={item.title}
+                url={item.url}
+              />
+            );
+          })}
+          {story.slice(6, 11).map(item => {
+            return (
+              <StoriesCard
+                key={item.storyid}
+                title={item.title}
+                url={item.url}
+              />
+            );
+          })}
+        </StoryBox>
+      </Container>
+      {/* <PageTab /> */}
+    </div>
   );
 }
 
