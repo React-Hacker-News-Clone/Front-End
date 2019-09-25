@@ -3,29 +3,19 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { withFormik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
 import axiosWithAuth from "../../utils/axiosWithAuth";
 // import { ToastContainer } from 'react-toastr';
 
 import "./RegistrationForm.css";
 
-const postUrl = "https://francoiscoding-javabackend.herokuapp.com/registration";
 function RegistrationForm(props) {
   return (
     <Form className="register-form" onSubmit={props.handleSubmit}>
-      <Form.Group controlId="formBasicName">
-        <Form.Label>Name</Form.Label>
-        <Form.Control as={Field} type="name" name="name" />
-        <ErrorMessage name="name" />
-      </Form.Group>
-      <Form.Group controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control as={Field} type="username" name="username" />
-        <ErrorMessage name="username" />
-      </Form.Group>
       <Form.Group controlId="formBasicUsername">
         <Form.Label>Email</Form.Label>
-        <Form.Control as={Field} type="email" name="email" />
-        <ErrorMessage name="email" />
+        <Form.Control as={Field} type="text" name="username" />
+        <ErrorMessage name="username" />
       </Form.Group>
       <Form.Group controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
@@ -38,17 +28,13 @@ function RegistrationForm(props) {
 }
 
 const FormikRegistrationForm = withFormik({
-  mapPropsToValues({ name, username, email, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      name: name || "",
-      username: username || "",
-      email: email || "",
+      email: username || "",
       password: password || ""
     };
   },
   validationSchema: Yup.object().shape({
-    name: Yup.string().required("Name field is empty"),
-    username: Yup.string().required("Please pick a username"),
     email: Yup.string()
       .email("Invalid email")
       .required("Email field is empty"),
@@ -56,14 +42,37 @@ const FormikRegistrationForm = withFormik({
   }),
   handleSubmit(values, { props }) {
     props.history.push("/stories");
+    console.log("inputtted values", values);
 
-    axiosWithAuth()
-      .post(postUrl, values)
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => console.log(error.message));
+    axios
+      .post(
+        "https://francoiscoding-javabackend.herokuapp.com/registration",
+        `grant_type=password&username=${values.username}&password=${values.password}`,
+        {
+          headers: {
+            Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+        }
+      )
+      .then(res => localStorage.setItem("token", res.data.access_token))
+      .catch(err => console.log(err));
   }
 })(RegistrationForm);
 
 export default FormikRegistrationForm;
+
+// axios
+//     .post(
+//       "https://francoiscoding-javabackend.herokuapp.com/registration",
+//       `grant_type=password&username=${values.username}&password=${values.password}`,
+//       {
+//         headers: {
+//           Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+//           "Content-Type": "application/x-www-form-urlencoded"
+//         }
+//       }
+//     )
+//     .then(res => localStorage.setItem("token", res.data.access_token))
+//     .catch(err => console.log(err));
+// };

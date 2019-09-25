@@ -3,7 +3,6 @@ import axios from "axios";
 import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
 // import PageTab from "../PageTab/PageTab";
-
 //styling below
 
 const Container = styled.div`
@@ -54,7 +53,7 @@ function Stories() {
               />
             );
           })}
-          {story.slice(6, 11).map(item => {
+          {story.slice(6, 112).map(item => {
             return (
               <StoriesCard
                 key={item.storyid}
