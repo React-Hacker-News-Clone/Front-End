@@ -3,5 +3,14 @@ html {
 }
 
 .hnlogo {
-  max-width: 90%;
+  max-width: 40%;
+}
+
+.navbar {
+  padding: 0 !important;
+}
+
+.navbar-brand {
+  margin-right: 0 !important;
+  margin-left: 2rem !important;
 }
