@@ -20,7 +20,13 @@ const Navigation = props => {
   ) {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand>hackernews.clone</Navbar.Brand>
+        <Navbar.Brand>
+          <img
+            src="https://i.imgur.com/hfalU7U.png"
+            alt="Hacker News Logo"
+            className="hnlogo"
+          />
+        </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/hackernews">
             Hacker News
@@ -43,7 +49,13 @@ const Navigation = props => {
 
   return (
     <Navbar bg="dark" variant="dark">
-      <Navbar.Brand>hackernews.clone</Navbar.Brand>
+      <Navbar.Brand>
+        <img
+          src="https://i.imgur.com/hfalU7U.png"
+          alt="Hacker News Logo"
+          className="hnlogo"
+        />
+      </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link as={NavLink} to="/hackernews">
           Hacker News
