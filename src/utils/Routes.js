@@ -5,7 +5,7 @@ import { Switch, Route } from "react-router-dom";
 import LoginForm from "../components/LoginForm/LoginForm";
 import FormikRegistrationForm from "../components/RegistrationForm/RegistrationForm";
 import Stories from "../components/Stories/Stories";
-import UserStories from "../components/UserStories/UserStories";
+import UserStories from "../components/UserStories/UserStories.js";
 import StoryPostForm from "../components/StoryPostForm/StoryPostForm";
 import Navigation from "../components/Navigation/Navigation";
 
