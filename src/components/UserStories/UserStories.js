@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getStories } from "../../store/actions";
 import UserStoriesCard from "./UserStoriesCard";
 import styled from "styled-components";
+import LoadingScreen from "react-loading-screen";
 
 //styling below
 
@@ -24,24 +25,37 @@ const StoryBox = styled.div`
 //function below
 
 const UserStories = ({ getStories, stories }) => {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     getStories();
   }, [getStories]);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 900);
   return (
     <Container>
-      <StoryBox>
-        {stories.map(item => {
-          return (
-            <UserStoriesCard
-              key={item.storyid}
-              title={item.title}
-              story={item.story}
-              id={item._id}
-            />
-          );
-        })}
-      </StoryBox>
+      <LoadingScreen
+        loading={loading}
+        bgColor="#f1f1f1"
+        textColor="#676767"
+        text="Loading Stories ..."
+        spinnerColor="#9ee5f8"
+      >
+        <StoryBox>
+          {stories.map(item => {
+            return (
+              <UserStoriesCard
+                key={item.storyid}
+                title={item.title}
+                story={item.story}
+                id={item._id}
+              />
+            );
+          })}
+        </StoryBox>
+      </LoadingScreen>
     </Container>
   );
 };

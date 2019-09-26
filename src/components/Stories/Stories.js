@@ -3,6 +3,8 @@ import axios from "axios";
 import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
 import Pagination from "./Pagination";
+import LoadingScreen from "react-loading-screen";
+
 //styling below
 
 const Container = styled.div`
@@ -35,11 +37,13 @@ function Stories() {
         "https://francoiscoding-javabackend.herokuapp.com/stories/stories"
       );
       setStory(res.data);
-      setLoading(false);
     };
 
     fetchPosts();
   }, []);
+  setTimeout(() => {
+    setLoading(false);
+  }, 900);
 
   // Get current posts
   const indexOfLastStory = currentPage * storiesPerPage;
@@ -57,18 +61,26 @@ function Stories() {
   return (
     <div>
       <Container>
-        <StoryBox>
-          {/* <StoriesCard /> */}
-          {currentStories.map(item => {
-            return (
-              <StoriesCard
-                key={item.storyid}
-                title={item.title}
-                url={item.url}
-              />
-            );
-          })}
-        </StoryBox>
+        <LoadingScreen
+          loading={loading}
+          bgColor="#f1f1f1"
+          textColor="#676767"
+          text="Loading Stories ..."
+          spinnerColor="#9ee5f8"
+        >
+          <StoryBox>
+            {/* <StoriesCard /> */}
+            {currentStories.map(item => {
+              return (
+                <StoriesCard
+                  key={item.storyid}
+                  title={item.title}
+                  url={item.url}
+                />
+              );
+            })}
+          </StoryBox>
+        </LoadingScreen>
       </Container>
       <Pagination
         storiesPerPage={storiesPerPage}
