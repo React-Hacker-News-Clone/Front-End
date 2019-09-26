@@ -28,22 +28,21 @@ function UserStoriesCard(props) {
   };
 
   return (
-    <Card
-      style={{ width: "45rem", marginBottom: "1.5rem" }}
-      className="animatedCard"
-    >
-      <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
-        <Card.Title>
-          <SplitText charPoses={charPoses}>{props.title}</SplitText>
-        </Card.Title>
-        <div className="card-buttons">
-          <Card.Link href={props.story} target="_blank">
-            <SplitText charPoses={charPoses}>Link to Story</SplitText>
-          </Card.Link>
-          <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />
-        </div>
-      </Card.Body>
-    </Card>
+    <a href={props.story} target="_blank" rel="noopener noreferrer">
+      <Card
+        style={{ width: "45rem", marginBottom: "1.5rem" }}
+        className="animatedCard"
+      >
+        <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
+          <Card.Title>
+            <SplitText charPoses={charPoses}>{props.title}</SplitText>
+          </Card.Title>
+          <div className="card-buttons">
+            <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />
+          </div>
+        </Card.Body>
+      </Card>
+    </a>
   );
 }
 
