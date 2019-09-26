@@ -3,11 +3,11 @@ import { withFormik, Form, Field } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import "./LoginForm.css";
-import styled from "styled-components";
 import { Button } from "@chakra-ui/core";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+
+import styled from "styled-components";
 
 const FormStyle = styled.div`
   margin: 15px auto;
@@ -65,9 +65,8 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
             name="password"
             placeholder="Password"
           />
-
           <Link to="/hackernews">
-            <Button className="button-style">Log In </Button>
+            <Button className="button-style"> Log In </Button>
           </Link>
         </Form>
       </FormStyle>
