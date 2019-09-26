@@ -3,16 +3,9 @@ import { withFormik, Form, Field } from "formik";
 import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import { Button } from "@chakra-ui/core";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-
-import styled from "styled-components";
-
-const FormStyle = styled.div`
-  margin: 15px auto;
-  max-width: 320px;
-`;
+import { CardLogin, Title, ShortText, FormStyle } from "../Styles/LoginStyles";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCM3KbpAkmHXE3wIy3Int2ANC3WvrhPbZc",
@@ -48,44 +41,46 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
 
   return (
     <>
-      <FormStyle>
-        <Form className="login-form">
-          <h2> Sign in </h2>
-          {touched.username && errors.username && <p>{errors.email}</p>}
-          <Field
-            className="field-form"
-            type="text"
-            name="username"
-            placeholder="Username"
-          />
-          {touched.password && errors.password && <p>{errors.password}</p>}
-          <Field
-            className="field-form"
-            type="password"
-            name="password"
-            placeholder="Password"
-          />
+      <CardLogin>
+        <Title> Welcome </Title>
+        <ShortText>
+          {" "}
+          To keep connected with us please login with your personal info.
+        </ShortText>
+        {touched.username && errors.username && <p>{errors.email}</p>}
+        <Form>
+          <FormStyle>
+            <Field type="text" name="username" placeholder="Username" />
+            {touched.password && errors.password && <p>{errors.password}</p>}
+          </FormStyle>
+          <FormStyle>
+            <Field type="password" name="password" placeholder="Password" />
+          </FormStyle>
           <Link to="/hackernews">
-            <Button className="button-style"> Log In </Button>
+            <Button> Log In </Button>
           </Link>
         </Form>
-      </FormStyle>
-      <div className="App">
-        {isSignedIn ? (
-          <>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <img src={firebase.auth().currentUser.photoURL} alt="Profile Url" />
-          </>
-        ) : (
-          <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        )}
-      </div>
-      <p>
-        Need an account? <a href="/register">Register here</a>.
-      </p>
+
+        <div className="App">
+          {isSignedIn ? (
+            <>
+              <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+              <img
+                src={firebase.auth().currentUser.photoURL}
+                alt="Profile Url"
+              />
+            </>
+          ) : (
+            <StyledFirebaseAuth
+              uiConfig={uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          )}
+        </div>
+        <ShortText>
+          Need an account? <a href="/register">Register here</a>.
+        </ShortText>
+      </CardLogin>
     </>
   );
 }
