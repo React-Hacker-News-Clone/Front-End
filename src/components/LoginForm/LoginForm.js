@@ -5,7 +5,13 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import { CardLogin, Title, ShortText, FormStyle } from "../Styles/LoginStyles";
+import {
+  CardLogin,
+  Title,
+  ShortText,
+  FormStyle,
+  Button
+} from "../Styles/LoginStyles";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCM3KbpAkmHXE3wIy3Int2ANC3WvrhPbZc",
