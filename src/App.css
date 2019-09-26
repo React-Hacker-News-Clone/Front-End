@@ -18,3 +18,7 @@ html {
 .ml-auto {
   margin-right: 2rem;
 }
+
+body {
+  cursor: url("https://i.imgur.com/SWKZIAE.png"), auto;
+}

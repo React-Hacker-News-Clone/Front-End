@@ -5,6 +5,8 @@ import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import "./LoginForm.css";
 import styled from "styled-components";
+import { Button } from "@chakra-ui/core";
+import { Link } from "react-router-dom";
 import * as Yup from "yup";
 
 const FormStyle = styled.div`
@@ -64,7 +66,9 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
             placeholder="Password"
           />
 
-          <button type="submit"> Log In</button>
+          <Link to="/hackernews">
+            <Button className="button-style">Log In </Button>
+          </Link>
         </Form>
       </FormStyle>
       <div className="App">
