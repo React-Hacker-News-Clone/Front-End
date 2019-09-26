@@ -4,6 +4,9 @@
   justify-content: center;
   list-style-type: none;
 }
+.Pagination:hover {
+  cursor: pointer;
+}
 
 .page-link {
   width: 40px;

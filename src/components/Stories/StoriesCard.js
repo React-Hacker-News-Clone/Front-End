@@ -7,10 +7,10 @@ const charPoses = {
   hoverable: true,
   init: { scale: 1 },
   hover: {
-    scale: 1.01,
+    scale: 1.001,
     transition: {
       type: "spring",
-      velocity: 12
+      velocity: 8
     }
   }
 };
