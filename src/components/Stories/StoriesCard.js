@@ -20,19 +20,18 @@ function StoriesCard({ title, url, loading }) {
     return <h2>Loading......</h2>;
   }
   return (
-    <Card
-      style={{ width: "45rem", marginBottom: "1.5rem" }}
-      className="animatedCard"
-    >
-      <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
-        <Card.Title>
-          <SplitText charPoses={charPoses}>{title}</SplitText>
-        </Card.Title>
-        <Card.Link href={url} target="_blank">
-          <SplitText charPoses={charPoses}>Link to Story</SplitText>
-        </Card.Link>
-      </Card.Body>
-    </Card>
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      <Card
+        style={{ width: "45rem", marginBottom: "1.5rem" }}
+        className="animatedCard"
+      >
+        <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
+          <Card.Title>
+            <SplitText charPoses={charPoses}>{title}</SplitText>
+          </Card.Title>
+        </Card.Body>
+      </Card>
+    </a>
   );
 }
 

@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   stories: [],
+  comments: [],
   isFetching: false,
   error: ""
 };
