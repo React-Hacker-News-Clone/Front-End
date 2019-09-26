@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { getStories, deleteStory } from "../../store/actions";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
+import "./UserStoriesCard.css";
 
 function UserStoriesCard(props) {
   const handleDelete = () => {
@@ -16,11 +19,13 @@ function UserStoriesCard(props) {
     <Card style={{ width: "45rem", marginBottom: "1.5rem" }}>
       <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
         <Card.Title>{props.title}</Card.Title>
-        <Card.Link href={props.story} target="_blank">
-          Link to Story
-        </Card.Link>
+        <div className="card-buttons">
+          <Card.Link href={props.story} target="_blank">
+            Link to Story
+          </Card.Link>
+          <FontAwesomeIcon icon={faTrash} onClick={handleDelete} />
+        </div>
       </Card.Body>
-      <Button onClick={handleDelete}>Delete</Button>
     </Card>
   );
 }

@@ -1,0 +1,10 @@
+.Pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.page-link {
+  width: 40px;
+}

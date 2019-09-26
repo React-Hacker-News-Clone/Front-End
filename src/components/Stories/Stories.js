@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
-// import PageTab from "../PageTab/PageTab";
+import Pagination from "./Pagination";
 //styling below
 
 const Container = styled.div`
@@ -24,36 +24,42 @@ const StoryBox = styled.div`
 
 function Stories() {
   const [story, setStory] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [storiesPerPage] = useState(8);
 
   useEffect(() => {
-    axios
-      .get("https://francoiscoding-javabackend.herokuapp.com/stories/stories")
-      .then(res => {
-        //console.log("Stories Data: ", res.data);
-        setStory(res.data);
-        //console.log("STORY: ", story)
-      })
-      .catch(err => {
-        console.log("Stories.js Error with story pull: ", err);
-      });
+    const fetchPosts = async () => {
+      setLoading(true);
+      const res = await axios.get(
+        "https://francoiscoding-javabackend.herokuapp.com/stories/stories"
+      );
+      setStory(res.data);
+      setLoading(false);
+    };
+
+    fetchPosts();
   }, []);
+
+  // Get current posts
+  const indexOfLastStory = currentPage * storiesPerPage;
+  const indexOfFirstStory = indexOfLastStory - storiesPerPage;
+  const currentStories = story.slice(indexOfFirstStory, indexOfLastStory);
+
+  // Change Page
+  const paginate = pageNumber => {
+    setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
+  };
+
+  console.log(story);
 
   return (
     <div>
       <Container>
         <StoryBox>
           {/* <StoriesCard /> */}
-          {/* {story.slice(0, 5).map(item => { <--this will only display 5 cards  */}
-          {story.slice(0, 5).map(item => {
-            return (
-              <StoriesCard
-                key={item.storyid}
-                title={item.title}
-                url={item.url}
-              />
-            );
-          })}
-          {story.slice(6, 112).map(item => {
+          {currentStories.map(item => {
             return (
               <StoriesCard
                 key={item.storyid}
@@ -64,6 +70,11 @@ function Stories() {
           })}
         </StoryBox>
       </Container>
+      <Pagination
+        storiesPerPage={storiesPerPage}
+        totalStories={story.length}
+        paginate={paginate}
+      />
       {/* <PageTab /> */}
     </div>
   );

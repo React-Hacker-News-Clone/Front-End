@@ -23,7 +23,7 @@ firebase.initializeApp({
   measurementId: "G-D7SGF8KTRQ"
 });
 
-function LoginForm({ values, errors, touched }) {
+function LoginForm({ values, errors, touched, isSubmitting }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const uiConfig = {
     signInFlow: "popup",
@@ -63,7 +63,8 @@ function LoginForm({ values, errors, touched }) {
             name="password"
             placeholder="Password"
           />
-          <button>Log In</button>
+
+          <button type="submit"> Log In</button>
         </Form>
       </FormStyle>
       <div className="App">
@@ -79,7 +80,9 @@ function LoginForm({ values, errors, touched }) {
           />
         )}
       </div>
-      \
+      <p>
+        Need an account? <a href="/register">Register here</a>.
+      </p>
     </>
   );
 }
@@ -91,7 +94,7 @@ const FormikLoginForm = withFormik({
       password: password || ""
     };
   },
-  //======VALIDATION SCHEMA==========
+  // ======VALIDATION SCHEMA==========
   // validationSchema: Yup.object().shape({
   //   username: Yup.string()
   //     .username("Username not valid")

@@ -7,10 +7,14 @@ html {
 }
 
 .navbar {
-  padding: 0 !important;
+  padding: 0;
 }
 
 .navbar-brand {
   margin-right: 0 !important;
   margin-left: 2rem !important;
+}
+
+.ml-auto {
+  margin-right: 2rem;
 }

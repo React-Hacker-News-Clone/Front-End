@@ -1,6 +1,6 @@
 import React from "react";
 import PrivateRoute from "./PrivateRoute";
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 import LoginForm from "../components/LoginForm/LoginForm";
 import FormikRegistrationForm from "../components/RegistrationForm/RegistrationForm";

@@ -13,7 +13,7 @@ function RegistrationForm(props) {
   return (
     <Form className="register-form" onSubmit={props.handleSubmit}>
       <Form.Group controlId="formBasicUsername">
-        <Form.Label>Email</Form.Label>
+        <Form.Label>Username</Form.Label>
         <Form.Control as={Field} type="text" name="username" />
         <ErrorMessage name="username" />
       </Form.Group>
@@ -30,18 +30,15 @@ function RegistrationForm(props) {
 const FormikRegistrationForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
-      email: username || "",
+      username: username || "",
       password: password || ""
     };
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid email")
-      .required("Email field is empty"),
+    username: Yup.string().required("Username field is empty"),
     password: Yup.string().min(6, "Password must be 6 characters or longer")
   }),
   handleSubmit(values, { props }) {
-    props.history.push("/stories");
     console.log("inputtted values", values);
 
     axios
@@ -57,6 +54,7 @@ const FormikRegistrationForm = withFormik({
       )
       .then(res => localStorage.setItem("token", res.data.access_token))
       .catch(err => console.log(err));
+    props.history.push("/hackernews");
   }
 })(RegistrationForm);
 
