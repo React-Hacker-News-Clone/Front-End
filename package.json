@@ -15,6 +15,8 @@
     "react-dom": "^16.9.0",
     "react-firebaseui": "^4.0.0",
     "react-paginate": "^6.3.0",
+    "react-pose": "^4.0.8",
+    "react-pose-text": "^3.1.0",
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",

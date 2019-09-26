@@ -3,8 +3,20 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import firebase from "firebase";
-
 import "./Navigation.css";
+import SplitText from "react-pose-text";
+
+const charPoses = {
+  hoverable: true,
+  init: { scale: 1 },
+  hover: {
+    scale: 1.01,
+    transition: {
+      type: "spring",
+      velocity: 12
+    }
+  }
+};
 
 const Navigation = props => {
   const logout = () => {
@@ -29,18 +41,18 @@ const Navigation = props => {
         </Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/hackernews">
-            Hacker News
+            <SplitText charPoses={charPoses}>Hacker News</SplitText>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/usernews">
-            User News
+            <SplitText charPoses={charPoses}>User News</SplitText>
           </Nav.Link>
           <Nav.Link as={NavLink} to="/submit">
-            Submit
+            <SplitText charPoses={charPoses}>Submit</SplitText>
           </Nav.Link>
         </Nav>
         <Nav className="ml-auto">
           <Nav.Link as={NavLink} to="/login">
-            Log in
+            <SplitText charPoses={charPoses}>Log in</SplitText>
           </Nav.Link>
         </Nav>
       </Navbar>
@@ -58,17 +70,20 @@ const Navigation = props => {
       </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link as={NavLink} to="/hackernews">
-          Hacker News
+          <SplitText charPoses={charPoses}>Hacker News</SplitText>
         </Nav.Link>
         <Nav.Link as={NavLink} to="/usernews">
-          User News
+          <SplitText charPoses={charPoses}>User News</SplitText>
         </Nav.Link>
         <Nav.Link as={NavLink} to="/submit">
-          Submit
+          <SplitText charPoses={charPoses}>Submit</SplitText>
         </Nav.Link>
       </Nav>
       <Nav className="ml-auto">
-        <Nav.Link onClick={logout}>Log out</Nav.Link>
+        <Nav.Link onClick={logout}>
+          {" "}
+          <SplitText charPoses={charPoses}>Log out</SplitText>
+        </Nav.Link>
       </Nav>
     </Navbar>
   );

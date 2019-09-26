@@ -59,18 +59,3 @@ const FormikRegistrationForm = withFormik({
 })(RegistrationForm);
 
 export default FormikRegistrationForm;
-
-// axios
-//     .post(
-//       "https://francoiscoding-javabackend.herokuapp.com/registration",
-//       `grant_type=password&username=${values.username}&password=${values.password}`,
-//       {
-//         headers: {
-//           Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
-//           "Content-Type": "application/x-www-form-urlencoded"
-//         }
-//       }
-//     )
-//     .then(res => localStorage.setItem("token", res.data.access_token))
-//     .catch(err => console.log(err));
-// };
