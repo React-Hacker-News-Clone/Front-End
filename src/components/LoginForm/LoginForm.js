@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import * as Yup from "yup";
+import LoadingScreen from "react-loading-screen";
 
 import { CardLogin, Title, ShortText, FormStyle } from "../Styles/LoginStyles";
 
@@ -21,8 +22,14 @@ firebase.initializeApp({
   measurementId: "G-D7SGF8KTRQ"
 });
 
-function LoginForm({ values, errors, touched, isSubmitting }) {
+function LoginForm({ values, errors, touched, isSubmitting, history }) {
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  setTimeout(() => {
+    setLoading(false);
+  }, 900);
+
   const uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -31,7 +38,10 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
       firebase.auth.GithubAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccess: () => false
+      signInSuccess: () => {
+        console.log("clicked");
+        history.push("/hackernews");
+      }
     }
   };
 
@@ -67,11 +77,16 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
         <div className="App">
           {isSignedIn ? (
             <>
-              <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-              <img
-                src={firebase.auth().currentUser.photoURL}
-                alt="Profile Url"
-              />
+              <LoadingScreen
+                loading={loading}
+                bgColor="#f1f1f1"
+                textColor="#676767"
+                text={`Welcome ${
+                  firebase.auth().currentUser.displayName
+                } Loading Hacker News ...`}
+                spinnerColor="#9ee5f8"
+                logoSrc={firebase.auth().currentUser.photoURL}
+              ></LoadingScreen>
             </>
           ) : (
             <StyledFirebaseAuth
@@ -101,13 +116,13 @@ const FormikLoginForm = withFormik({
     password: Yup.string().min(6, "Password must be 6 characters or longer")
   }),
 
-  handleSubmit(values, { props }) {
-    console.log("inputtted values", values);
+  handleSubmit(data, { props }) {
+    console.log("inputtted values", data);
 
     axios
       .post(
         "https://francoiscoding-javabackend.herokuapp.com/registration",
-        `grant_type=password&username=${values.username}&password=${values.password}`,
+        `grant_type=password&username=${data.username}&password=${data.password}`,
         {
           headers: {
             Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
