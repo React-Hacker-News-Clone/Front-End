@@ -7,3 +7,9 @@
 .fa-trash {
   cursor: pointer;
 }
+
+.animatedCard:hover {
+  border: 0.04rem solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 5px 10px dimgray;
+  transform: scale(1.025);
+}

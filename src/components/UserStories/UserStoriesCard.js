@@ -28,7 +28,10 @@ function UserStoriesCard(props) {
   };
 
   return (
-    <Card style={{ width: "45rem", marginBottom: "1.5rem" }}>
+    <Card
+      style={{ width: "45rem", marginBottom: "1.5rem" }}
+      className="animatedCard"
+    >
       <Card.Body className="cardContain" style={{ paddingBottom: "1rem" }}>
         <Card.Title>
           <SplitText charPoses={charPoses}>{props.title}</SplitText>
