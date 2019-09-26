@@ -4,14 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import axios from "axios";
 import * as Yup from "yup";
-import {
-  CardLogin,
-  Title,
-  ShortText,
-  FormStyle,
-  Button
-} from "../Styles/LoginStyles";
+
+import { CardLogin, Title, ShortText, FormStyle } from "../Styles/LoginStyles";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCM3KbpAkmHXE3wIy3Int2ANC3WvrhPbZc",
@@ -63,7 +60,7 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
             <Field type="password" name="password" placeholder="Password" />
           </FormStyle>
           <Link to="/hackernews">
-            <Button> Log In </Button>
+            <Button type="submit"> Log In </Button>
           </Link>
         </Form>
 
@@ -98,18 +95,29 @@ const FormikLoginForm = withFormik({
       password: password || ""
     };
   },
-  // ======VALIDATION SCHEMA==========
-  // validationSchema: Yup.object().shape({
-  //   username: Yup.string()
-  //     .username("Username not valid")
-  //     .required("Enter an username, please!"),
-  //   password: Yup.string()
-  //     .min(6, "Password must be 6 characters or longer")
-  //     .required("Password is required")
-  // }),
 
-  handleSubmit(values) {
-    console.log(values);
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required("Username field is empty"),
+    password: Yup.string().min(6, "Password must be 6 characters or longer")
+  }),
+
+  handleSubmit(values, { props }) {
+    console.log("inputtted values", values);
+
+    axios
+      .post(
+        "https://francoiscoding-javabackend.herokuapp.com/registration",
+        `grant_type=password&username=${values.username}&password=${values.password}`,
+        {
+          headers: {
+            Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
+            "Content-Type": "application/x-www-form-urlencoded"
+          }
+        }
+      )
+      .then(res => localStorage.setItem("token", res.data.access_token))
+      .catch(err => console.log(err));
+    props.history.push("/hackernews");
   }
 })(LoginForm);
 
