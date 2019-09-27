@@ -34,6 +34,8 @@ const FormikRegistrationForm = withFormik({
       password: password || ""
     };
   },
+  // Form Validation
+
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Username field is empty"),
     password: Yup.string().min(6, "Password must be 6 characters or longer")
@@ -41,6 +43,7 @@ const FormikRegistrationForm = withFormik({
   handleSubmit(values, { props }) {
     console.log("inputtted values", values);
 
+    // Axios Request for User to be Registered
     axios
       .post(
         "https://francoiscoding-javabackend.herokuapp.com/registration",

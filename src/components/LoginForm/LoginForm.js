@@ -8,7 +8,6 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import * as Yup from "yup";
 import LoadingScreen from "react-loading-screen";
-
 import {
   CardLogin,
   Title,
@@ -17,6 +16,7 @@ import {
   ButtonStyle
 } from "../Styles/LoginStyles";
 
+// Initialize Firebase to Connect to Application
 firebase.initializeApp({
   apiKey: "AIzaSyCM3KbpAkmHXE3wIy3Int2ANC3WvrhPbZc",
   authDomain: "hackernews-socials.firebaseapp.com",
@@ -29,13 +29,16 @@ firebase.initializeApp({
 });
 
 function LoginForm({ values, errors, touched, isSubmitting, history }) {
+  // Create State & Setter Functions
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  // Time for Loading Screen
   setTimeout(() => {
     setLoading(false);
   }, 900);
 
+  // Firebase Config for Login Features
   const uiConfig = {
     signInFlow: "popup",
     signInOptions: [
@@ -50,6 +53,7 @@ function LoginForm({ values, errors, touched, isSubmitting, history }) {
     }
   };
 
+  // Use Effect That Runs on Mount
   useEffect(() => {
     firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
@@ -112,6 +116,7 @@ const FormikLoginForm = withFormik({
     };
   },
 
+  // Form Validation
   validationSchema: Yup.object().shape({
     username: Yup.string().required("Username field is empty"),
     password: Yup.string().min(6, "Password must be 6 characters or longer")
@@ -120,6 +125,7 @@ const FormikLoginForm = withFormik({
   handleSubmit(data, { props }) {
     console.log("inputtted values", data);
 
+    // Axios Request for User to be Authenticated
     axios
       .post(
         "https://francoiscoding-javabackend.herokuapp.com/registration",

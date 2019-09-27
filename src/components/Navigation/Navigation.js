@@ -6,6 +6,7 @@ import firebase from "firebase";
 import "./Navigation.css";
 import SplitText from "react-pose-text";
 
+// Config for Letter Animation
 const charPoses = {
   hoverable: true,
   init: { scale: 1 },
@@ -19,6 +20,7 @@ const charPoses = {
 };
 
 const Navigation = props => {
+  // Function That Runs When User Clicks Logout
   const logout = () => {
     localStorage.clear();
     firebase.auth().signOut();
@@ -26,6 +28,7 @@ const Navigation = props => {
     indexedDB.deleteDatabase("firebaseLocalStorageDb");
   };
 
+  // If Statement That Shows Navbar Based on the Location of the User
   if (
     props.location.pathname === "/login" ||
     props.location.pathname === "/register" ||
