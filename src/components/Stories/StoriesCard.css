@@ -1,5 +1,7 @@
 .cardContain {
   color: grey;
+  display: flex;
+  flex-direction: column;
 }
 
 .animatedCard:hover {
@@ -7,4 +9,8 @@
   box-shadow: 0px 5px 10px dimgray;
   transform: scale(1.025);
   cursor: pointer;
+}
+
+.low {
+  color: #4cbddd;
 }

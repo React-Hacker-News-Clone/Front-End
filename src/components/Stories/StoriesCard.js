@@ -17,10 +17,12 @@ const charPoses = {
 };
 
 function StoriesCard({ title, url, loading, id }) {
+  const [value, setValue] = useState(0);
+
   if (loading) {
     return <h2>Loading......</h2>;
   }
-  console.log("card ids", id);
+
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
       <Card
@@ -31,6 +33,13 @@ function StoriesCard({ title, url, loading, id }) {
           <Card.Title>
             <SplitText charPoses={charPoses}>{title}</SplitText>
           </Card.Title>
+          <Card.Text>
+            <Rating
+              emptySymbol="far fa-star low"
+              fullSymbol="fas fa-star low"
+              fractions={2}
+            />
+          </Card.Text>
         </Card.Body>
       </Card>
     </a>
