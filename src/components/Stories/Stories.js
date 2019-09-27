@@ -76,6 +76,7 @@ function Stories() {
                   key={item.storyid}
                   title={item.title}
                   url={item.url}
+                  id={item.storyid}
                 />
               );
             })}

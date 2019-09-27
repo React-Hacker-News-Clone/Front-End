@@ -13,7 +13,7 @@
 
 .submitImage {
   width: 60%;
-  max-height: 43rem;
+  max-height: 42rem;
   clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
 }
 
