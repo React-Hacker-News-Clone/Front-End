@@ -1,5 +1,88 @@
-.post-story {
+/* Submit Story Styling */
+.submit {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+.submitForm {
+  background: #fffefa;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submitImage {
+  width: 60%;
+  max-height: 44rem;
+  clip-path: polygon(40% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.formTitle {
+  background: #fffefa;
+  padding: 1rem 1rem 0 1rem;
+  text-align: center;
+}
+
+.submitForm input {
+  background: #efefef;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 0.3rem;
+  height: 3rem;
+}
+
+.submitInputs {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-bottom: 1rem;
+}
+
+.formContainer {
+  width: 40%;
   margin: auto;
-  margin-top: 2rem;
-  width: 45rem;
+  padding-bottom: 4rem;
+}
+
+label {
+  padding: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.signinTextContainer {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.signupNav {
+  margin: 0 0 0 0.5rem;
+  color: #e65400;
+  text-decoration: underline;
+}
+.signinText {
+  text-align: center;
+}
+@media (max-width: 500px) {
+  .formContainer {
+    width: 90%;
+  }
+  .submitImage {
+    display: none;
+  }
+  .submitForm {
+    width: 90vw;
+    align-items: center;
+  }
+
+  .formTitle {
+    width: 90vw;
+  }
+
+  .submitForm input {
+    height: 3rem;
+  }
+  label {
+    font-size: 1rem;
+  }
 }

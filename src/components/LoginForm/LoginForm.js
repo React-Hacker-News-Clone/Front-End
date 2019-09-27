@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { withFormik, Form, Field } from "formik";
+import { withFormik, Field } from "formik";
+import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import * as Yup from "yup";
 import LoadingScreen from "react-loading-screen";
 
-import { CardLogin, Title, ShortText, FormStyle } from "../Styles/LoginStyles";
+import {
+  CardLogin,
+  Title,
+  ShortText,
+  FormStyle,
+  ButtonStyle
+} from "../Styles/LoginStyles";
 
 firebase.initializeApp({
   apiKey: "AIzaSyCM3KbpAkmHXE3wIy3Int2ANC3WvrhPbZc",
@@ -40,7 +46,6 @@ function LoginForm({ values, errors, touched, isSubmitting, history }) {
     callbacks: {
       signInSuccess: () => {
         console.log("clicked");
-        history.push("/hackernews");
       }
     }
   };
@@ -61,19 +66,15 @@ function LoginForm({ values, errors, touched, isSubmitting, history }) {
           To keep connected with us please login with your personal info.
         </ShortText>
         {touched.username && errors.username && <p>{errors.email}</p>}
-        <Form>
-          <FormStyle>
-            <Field type="text" name="username" placeholder="Username" />
-            {touched.password && errors.password && <p>{errors.password}</p>}
-          </FormStyle>
-          <FormStyle>
-            <Field type="password" name="password" placeholder="Password" />
-          </FormStyle>
-          <Link to="/hackernews">
-            <Button type="submit"> Log In </Button>
-          </Link>
-        </Form>
-
+        <FormStyle>
+          <Form.Label>Username</Form.Label>
+          <Field type="text" name="username" />
+          {touched.password && errors.password && <p>{errors.password}</p>}
+          <Form.Label>Password</Form.Label>
+          <Field type="password" name="password" />
+        </FormStyle>
+        <ButtonStyle type="submit"> LOGIN</ButtonStyle>
+        <ShortText> Or Sign Up Using </ShortText>
         <div className="App">
           {isSignedIn ? (
             <>

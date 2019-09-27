@@ -23,6 +23,7 @@ const Navigation = props => {
     localStorage.clear();
     firebase.auth().signOut();
     props.history.push("/login");
+    indexedDB.deleteDatabase("firebaseLocalStorageDb");
   };
 
   if (

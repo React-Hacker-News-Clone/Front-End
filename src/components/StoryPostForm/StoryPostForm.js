@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { ButtonContainer } from "../Styles/LoginStyles";
 
 import axiosWithAuth from "../../utils/axiosWithAuth";
 import "./StoryPostForm.css";
@@ -30,32 +29,39 @@ const StoryPostForm = props => {
   };
 
   return (
-    <div className="post-story">
-      <h2>Submit a story</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formBasicTitle">
-          <Form.Label>Title</Form.Label>
-          <Form.Control
-            type="text"
-            name="title"
-            value={newStory.title}
-            onChange={evt => handleChange(evt)}
-          />
-        </Form.Group>
+    <div className="submit">
+      <div className="formContainer">
+        <form onSubmit={handleSubmit} className="submitForm">
+          <p className="submitInputs">
+            <label style={{ fontWeight: "bold" }}>Title</label>
+            <input
+              placeholder="Story Title ..."
+              autoComplete="off"
+              type="text"
+              name="title"
+              value={newStory.title}
+              onChange={evt => handleChange(evt)}
+            />
+          </p>
+          <p className="submitInputs">
+            <label style={{ fontWeight: "bold" }}>Story Url</label>
+            <input
+              placeholder="Url to Story ..."
+              type="text"
+              name="story"
+              value={newStory.story}
+              onChange={evt => handleChange(evt)}
+            />
+          </p>
 
-        <Form.Group controlId="formBasicTitle">
-          <Form.Label>URL</Form.Label>
-          <Form.Control
-            type="text"
-            name="story"
-            value={newStory.story}
-            onChange={evt => handleChange(evt)}
-          />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+          <ButtonContainer>Submit</ButtonContainer>
+        </form>
+      </div>
+      <img
+        src="https://i.imgur.com/dpCLfLO.jpg"
+        alt="Mysterious Hacker"
+        className="submitImage"
+      />
     </div>
   );
 };
