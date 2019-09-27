@@ -1,10 +1,9 @@
-Issues that need to be addressed
+### Future Implementations
 
 ## Rate Limter
 
-The delete endpoint is not being used in the reducer.
-Rather than filter through the array of stories to remove them, the delete endpoint should be hit to remove the story from the database.
+Users should be limited on how many stories are created/deleted. However currently the delete endpoint is not being utilized and will be in a future release.
 
 ## Admin Approved Non Members
 
-Implement an approval feature. In order for an anon submission to go live it must be approved by an admin user.
+Currently users can upload stories when signed in or out. In a future release users that are not signed in will need to have created stories approved by admins.

@@ -1,0 +1,17 @@
+/* Styling for Contact Button */
+
+.contactBtn {
+  border: 1px solid #4cbddd;
+  color: white;
+  background: #4cbddd;
+  text-align: center;
+  width: 15%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+}
+
+.contactBtn:hover {
+  cursor: pointer;
+}
