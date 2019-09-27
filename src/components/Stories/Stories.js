@@ -4,6 +4,7 @@ import StoriesCard from "./StoriesCard";
 import styled from "styled-components";
 import Pagination from "./Pagination";
 import LoadingScreen from "react-loading-screen";
+import "./Stories.css";
 
 //styling below
 
@@ -89,6 +90,7 @@ function Stories() {
         paginate={paginate}
       />
       {/* <PageTab /> */}
+      <div className="contactBtn">Contact Us</div>
     </div>
   );
 }

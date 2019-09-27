@@ -4,6 +4,7 @@ import { getStories } from "../../store/actions";
 import UserStoriesCard from "./UserStoriesCard";
 import styled from "styled-components";
 import LoadingScreen from "react-loading-screen";
+import "./UserStories.css";
 
 //styling below
 
@@ -35,28 +36,31 @@ const UserStories = ({ getStories, stories }) => {
     setLoading(false);
   }, 900);
   return (
-    <Container>
-      <LoadingScreen
-        loading={loading}
-        bgColor="#f1f1f1"
-        textColor="#676767"
-        text="Loading Stories ..."
-        spinnerColor="#9ee5f8"
-      >
-        <StoryBox>
-          {stories.map(item => {
-            return (
-              <UserStoriesCard
-                key={item.storyid}
-                title={item.title}
-                story={item.story}
-                id={item._id}
-              />
-            );
-          })}
-        </StoryBox>
-      </LoadingScreen>
-    </Container>
+    <>
+      <Container>
+        <LoadingScreen
+          loading={loading}
+          bgColor="#f1f1f1"
+          textColor="#676767"
+          text="Loading Stories ..."
+          spinnerColor="#9ee5f8"
+        >
+          <StoryBox>
+            {stories.map(item => {
+              return (
+                <UserStoriesCard
+                  key={item.storyid}
+                  title={item.title}
+                  story={item.story}
+                  id={item._id}
+                />
+              );
+            })}
+          </StoryBox>
+        </LoadingScreen>
+      </Container>
+      <div className="contactBtn">Contact Us</div>
+    </>
   );
 };
 
